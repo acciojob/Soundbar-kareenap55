@@ -1,1 +1,28 @@
 /*  your css code here. If applicable */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #6a0dad;
+    margin: 0;
+}
+
+.sound-container {
+    text-align: center;
+}
+
+.btn, .stop {
+    padding: 15px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #4b0082;
+    color: white;
+    border-radius: 5px;
+}
+
+.stop {
+    background-color: red;
+}

@@ -1,24 +1,25 @@
- window.sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
+// List of sound names
+const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
 
-function playSound(sound) {
-  stopSounds();
-  const audio = new Audio(./sounds/${sound}.mp3);
-  
-  audio.onerror = () => console.error(Error loading sound: ${sound}.mp3);
-  
-  audio.play();
-  audio.id = sound;
-  document.body.appendChild(audio);
-}
-
+// Function to stop all sounds
 function stopSounds() {
-  window.sounds.forEach(sound => {
-    const audio = document.getElementById(sound);
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-      audio.remove();
-    }
-  });
+    sounds.forEach(sound => {
+        const audio = document.getElementById(sound);
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    });
 }
 
+// Attach event listeners to each button
+sounds.forEach(sound => {
+    const button = document.getElementById(sound);
+    button.addEventListener("click", () => {
+        stopSounds(); // Stop other sounds before playing
+        document.getElementById(sound + "-audio").play();
+    });
+});
+
+// Stop button functionality
+document.getElementById("stop").addEventListener("click", stopSounds);
